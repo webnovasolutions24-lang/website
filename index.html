@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Web Nova Solution | Premium Web Development</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: #0A0C10;
+      color: #E8EDF5;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap');
+
+    :root {
+      --bg-dark: #0A0C10;
+      --primary: #3B82F6;
+      --secondary: #8B5CF6;
+      --text-light: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --glass-bg: rgba(15, 23, 42, 0.65);
+      --glass-border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 12, 16, 0.85);
+      border-bottom: 1px solid rgba(59,130,246,0.25);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 28px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hire-btn {
+      background: linear-gradient(95deg, #3B82F6, #8B5CF6);
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      box-shadow: 0 0 8px rgba(59,130,246,0.5);
+      transition: all 0.3s;
+    }
+
+    .hire-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 48px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(95deg, #3B82F6, #8B5CF6);
+      color: white;
+      box-shadow: 0 4px 14px rgba(59,130,246,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-outline-light {
+      border: 1.5px solid rgba(255,255,255,0.3);
+      background: transparent;
+      color: white;
+    }
+
+    .btn-outline-light:hover {
+      border-color: var(--primary);
+      background: rgba(59,130,246,0.1);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-glow {
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      top: -20%;
+      left: -20%;
+      background: radial-gradient(circle, rgba(59,130,246,0.2), transparent 70%);
+      filter: blur(80px);
+      z-index: 0;
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(to right, #FFFFFF, #93C5FD, #A78BFA);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+    .cta-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .trust-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 56px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 80px;
+      padding: 48px 32px;
+      border: var(--glass-border);
+      margin-top: 40px;
+    }
+    .stat-item {
+      text-align: center;
+      flex: 1;
+      min-width: 160px;
+    }
+    .stat-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+    .stat-number {
+      font-size: 2.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFF, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat-label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-header h2 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #FFF, #A78BFA);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    .badge {
+      background: rgba(59,130,246,0.2);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #60A5FA;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .portfolio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .portfolio-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
+      overflow: hidden;
+      width: 360px;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(59,130,246,0.6);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+    }
+    .portfolio-image {
+      height: 200px;
+      background: linear-gradient(145deg, #1E293B, #0F172A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+    .portfolio-content {
+      padding: 28px 24px 32px;
+      text-align: center;
+    }
+    .portfolio-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: white;
+    }
+    .portfolio-content p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59,130,246,0.15);
+      padding: 10px 20px;
+      border-radius: 40px;
+      color: #60A5FA;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+    .portfolio-link:hover {
+      background: rgba(59,130,246,0.3);
+      gap: 12px;
+    }
+
+    .testimonial-grid, .why-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+    .testimonial-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 32px;
+      padding: 32px;
+      width: 320px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s;
+    }
+    .testimonial-card:hover {
+      border-color: var(--primary);
+    }
+    .client-photo {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+    }
+    .review-text {
+      font-style: italic;
+      margin-bottom: 16px;
+      color: #CBD5E1;
+    }
+    .client-name {
+      font-weight: 700;
+      color: white;
+    }
+
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+    .pricing-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 36px 28px;
+      width: 300px;
+      transition: all 0.3s;
+      border: 1px solid rgba(59,130,246,0.3);
+      position: relative;
+    }
+    .premium-card {
+      background: rgba(20, 30, 55, 0.7);
+      box-shadow: 0 0 15px rgba(59,130,246,0.6);
+      animation: glowPulse 2s infinite;
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px rgba(59,130,246,0.4); border-color: rgba(59,130,246,0.5);}
+      50% { box-shadow: 0 0 25px rgba(59,130,246,0.8); border-color: #3B82F6;}
+      100% { box-shadow: 0 0 5px rgba(59,130,246,0.4); border-color: rgba(59,130,246,0.5);}
+    }
+    .most-popular {
+      position: absolute;
+      top: -15px;
+      right: 20px;
+      background: linear-gradient(95deg, #3B82F6, #8B5CF6);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin: 20px 0;
+    }
+    .pricing-features {
+      list-style: none;
+      margin: 30px 0;
+    }
+    .pricing-features li {
+      padding: 10px 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .why-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(6px);
+      border-radius: 28px;
+      padding: 32px;
+      width: 260px;
+      text-align: center;
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .why-card:hover {
+      transform: translateY(-8px);
+      background: rgba(59,130,246,0.1);
+    }
+    .why-icon {
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+    }
+
+    /* UPDATED CONTACT FORM STYLES */
+    .contact-form {
+      max-width: 650px;
+      margin: 0 auto;
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      border-radius: 48px;
+      padding: 40px;
+      border: var(--glass-border);
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 16px 20px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(59,130,246,0.4);
+      border-radius: 28px;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #3B82F6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    }
+    .form-status {
+      margin-top: 20px;
+      padding: 14px 20px;
+      border-radius: 28px;
+      text-align: center;
+      font-size: 0.9rem;
+      animation: slideUp 0.3s ease;
+      display: none;
+    }
+    .form-status.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10B981;
+      color: #34D399;
+    }
+    .form-status.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #EF4444;
+      color: #F87171;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .premium-footer {
+      background: #05070A;
+      border-top: 1px solid rgba(59,130,246,0.2);
+      padding: 56px 0 32px;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .footer-brand h3 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .social-links a {
+      color: #9CA3AF;
+      font-size: 1.5rem;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .social-links a:hover {
+      color: #3B82F6;
+    }
+    .footer-mini-cta {
+      margin-top: 24px;
+    }
+
+    .legal-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+    }
+    .legal-modal.active {
+      display: flex;
+    }
+    .legal-modal-content {
+      background: #0A0C10;
+      max-width: 900px;
+      width: 90%;
+      max-height: 85vh;
+      border-radius: 32px;
+      overflow-y: auto;
+      border: 1px solid rgba(59,130,246,0.3);
+      margin: 40px auto;
+    }
+    .legal-modal-header {
+      position: sticky;
+      top: 0;
+      background: #0A0C10;
+      padding: 20px 28px;
+      border-bottom: 1px solid rgba(59,130,246,0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .legal-modal-header h3 {
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #FFF, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .close-legal-modal {
+      background: none;
+      border: none;
+      color: #9CA3AF;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .close-legal-modal:hover {
+      color: #F87171;
+    }
+    .legal-modal-body {
+      padding: 32px 36px;
+    }
+    .legal-modal-body h2 {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+      color: #E8EDF5;
+      border-left: 5px solid #3B82F6;
+      padding-left: 20px;
+    }
+    .legal-modal-body h3 {
+      font-size: 1.3rem;
+      margin: 28px 0 12px 0;
+      color: #93C5FD;
+    }
+    .legal-modal-body p, .legal-modal-body li {
+      color: #CBD5E1;
+      margin-bottom: 16px;
+    }
+    .legal-modal-body ul {
+      margin: 16px 0 16px 28px;
+    }
+    .legal-note {
+      background: rgba(245, 158, 11, 0.15);
+      border-left: 5px solid #F59E0B;
+      padding: 20px 24px;
+      border-radius: 20px;
+      margin: 32px 0 24px;
+      font-size: 0.9rem;
+      color: #FDE68A;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+      z-index: 999;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: #1f2937;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+    }
+    .whatsapp-float:hover .whatsapp-tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .legal-link {
+      cursor: pointer;
+    }
+    .legal-link:hover {
+      color: #3B82F6;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+    }
+    .fade-up.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; gap: 16px; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+      .hero h1 { font-size: 2.2rem; }
+      section { padding: 60px 0; }
+      .trust-grid { flex-direction: column; align-items: center; gap: 30px; border-radius: 48px; }
+      .portfolio-card { width: 100%; max-width: 340px; }
+      .legal-modal-body { padding: 24px 20px; }
+      .contact-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">WEB NOVA</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#portfolio">Our Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="hire-btn">Hire Now →</a>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="container">
+    <div class="hero-content fade-up">
+      <div class="badge">⚡ Premium Digital Agency</div>
+      <h1>We Build Websites That Generate Revenue, Not Just Look Good</h1>
+      <p>High-performance web solutions that drive conversions, increase engagement, and grow your business. Modern, fast, and SEO-optimized.</p>
+      <div class="cta-group">
+        <a href="#contact" class="btn btn-primary">Get Started →</a>
+        <a href="#portfolio" class="btn btn-outline-light">View Portfolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container fade-up">
+  <div class="trust-grid">
+    <div class="stat-item"><div class="stat-icon">🚀</div><div class="stat-number">50+</div><div class="stat-label">Websites Delivered</div></div>
+    <div class="stat-item"><div class="stat-icon">⭐</div><div class="stat-number">100%</div><div class="stat-label">Client Satisfaction</div></div>
+    <div class="stat-item"><div class="stat-icon">🛡️</div><div class="stat-number">24/7</div><div class="stat-label">Premium Support</div></div>
+  </div>
+</div>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Our Work</h2>
+      <p>Live projects we've built for our clients</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-image">🎓</div>
+        <div class="portfolio-content">
+          <h3>Elevere Educational Hub</h3>
+          <p>English & Communication Training Platform</p>
+          <a href="https://www.elevereeducationalhub.in/" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Website →</a>
+        </div>
+      </div>
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-image">📋</div>
+        <div class="portfolio-content">
+          <h3>Kumar Vistar Connect</h3>
+          <p>Tax & Compliance Solutions Platform</p>
+          <a href="https://taxsolution.shop/" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Website →</a>
+        </div>
+      </div>
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-image">🚲</div>
+        <div class="portfolio-content">
+          <h3>Tandon Cycle Store</h3>
+          <p>Local Cycle Store & Service Center</p>
+          <a href="https://tandoncyclestore.html-5.me/#home" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Website →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-header fade-up"><h2>Transparent Pricing</h2><p>Choose the perfect plan for your growth</p></div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up"><h3>Basic</h3><div class="price">₹5,000</div><ul class="pricing-features"><li>✓ 5 Pages Website</li><li>✓ Basic SEO</li><li>✓ Responsive Design</li><li>✓ 30 Days Support</li></ul><a href="#contact" class="btn btn-outline-light" style="width:100%; text-align:center;">Get Plan →</a></div>
+      <div class="pricing-card fade-up"><div class="most-popular">🔥 Most Popular</div><h3>Advanced</h3><div class="price">₹12,000</div><ul class="pricing-features"><li>✓ 12 Pages Dynamic</li><li>✓ E-commerce Ready</li><li>✓ Advanced SEO Strategy</li><li>✓ 6 Months Priority Support</li></ul><a href="#contact" class="btn btn-primary" style="width:100%; text-align:center;">Choose Plan →</a></div>
+      <div class="pricing-card premium-card fade-up"><h3>Premium</h3><div class="price">₹25,000</div><ul class="pricing-features"><li>✓ Custom Web App</li><li>✓ Unlimited Revisions</li><li>✓ 1 Year Maintenance</li><li>✓ Dedicated Manager</li></ul><a href="#contact" class="btn btn-outline-light" style="width:100%; text-align:center;">Start Project →</a></div>
+    </div>
+    <p style="text-align:center; margin-top:32px; font-size:0.85rem; color:#6B7280;">*All prices exclusive of GST (18% as applicable)</p>
+  </div>
+</section>
+
+<section style="background: rgba(59,130,246,0.02);">
+  <div class="container">
+    <div class="section-header fade-up"><h2>Why Choose Web Nova?</h2></div>
+    <div class="why-grid">
+      <div class="why-card fade-up"><div class="why-icon">⚡</div><h3>Fast Delivery</h3><p>Agile sprints, launch in weeks not months</p></div>
+      <div class="why-card fade-up"><div class="why-icon">🔍</div><h3>SEO Optimized</h3><p>Rank higher with code-level optimization</p></div>
+      <div class="why-card fade-up"><div class="why-icon">📱</div><h3>Mobile First</h3><p>Flawless experience on any device</p></div>
+      <div class="why-card fade-up"><div class="why-icon">📊</div><h3>Conversion Focused</h3><p>Design that turns visitors into customers</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header fade-up"><h2>Loved by Entrepreneurs</h2></div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up"><div class="client-photo">👩‍💼</div><p class="review-text">"Web Nova built our e-commerce platform that increased sales by 150%. The team is incredibly responsive and visionary."</p><p class="client-name">— Meera Sharma, Founder</p></div>
+      <div class="testimonial-card fade-up"><div class="client-photo">👨‍💻</div><p class="review-text">"SEO results were mind-blowing. We ranked on first page for 10+ keywords in 2 months. Highly recommend!"</p><p class="client-name">— Rahul Verma, CTO</p></div>
+      <div class="testimonial-card fade-up"><div class="client-photo">⭐</div><p class="review-text">"From design to launch, flawless experience. The premium plan gave us a custom dashboard and 24/7 support."</p><p class="client-name">— Anjali Nair, Business Owner</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- UPDATED CONTACT SECTION WITH GOOGLE APPS SCRIPT INTEGRATION -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-up"><h2>Let's Scale Your Business</h2><p>Get a free consultation & quote</p></div>
+    <div class="contact-form fade-up">
+      <form id="leadForm">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
+        </div>
+        <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%; justify-content:center;">
+          🚀 Submit & Get Quote
+        </button>
+        <div id="formStatus" class="form-status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="premium-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>WEB NOVA SOLUTION</h3><p>Revenue-driven web experiences</p><div class="social-links"><a href="#">📘</a><a href="#">🐦</a><a href="#">📸</a><a href="#">💼</a></div></div>
+      <div><h4>Contact</h4><p>webnovasolutions24@gmail.com</p><p>+91 89605 39160</p><div class="footer-mini-cta"><a href="#contact" class="btn btn-outline-light" style="padding:8px 20px;">Hire Now →</a></div></div>
+      <div><h4>Legal</h4><p><span class="legal-link" onclick="openLegalModal('privacy')">Privacy Policy</span></p><p><span class="legal-link" onclick="openLegalModal('terms')">Terms of Service</span></p></div>
+    </div>
+    <div class="copyright" style="text-align:center; margin-top:48px; border-top:1px solid #1E293B; padding-top:24px;">© 2025 Web Nova Solution — Premium Web Development Agency</div>
+  </div>
+</footer>
+
+<div id="legalModal" class="legal-modal">
+  <div class="legal-modal-content">
+    <div class="legal-modal-header">
+      <h3 id="modalTitle">Privacy Policy</h3>
+      <button class="close-legal-modal" onclick="closeLegalModal()">&times;</button>
+    </div>
+    <div class="legal-modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<a href="https://wa.me/918960539160?text=Hello%20Web%20Nova%20Solution%2C%20I'm%20interested%20in%20your%20web%20development%20services." class="whatsapp-float" target="_blank">
+  <span class="whatsapp-tooltip">Chat with us 💬</span>
+  <svg width="34" height="34" viewBox="0 0 24 24" fill="white"><path d="M12.032 2.014c-5.514 0-9.986 4.472-9.986 9.986 0 1.76.456 3.474 1.318 4.985L2 22l5.496-1.437c1.445.788 3.086 1.204 4.76 1.204 5.514 0 9.986-4.472 9.986-9.986s-4.472-9.986-9.986-9.986z"/></svg>
+</a>
+
+<script>
+  // Scroll Animations
+  const faders = document.querySelectorAll('.fade-up');
+  const obs = new IntersectionObserver(e => { e.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('appear'); obs.unobserve(entry.target); } }); }, { threshold: 0.1 });
+  faders.forEach(el => obs.observe(el));
+
+  // ========== GOOGLE APPS SCRIPT CONTACT FORM ==========
+  const form = document.getElementById('leadForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formStatus = document.getElementById('formStatus');
+  
+  // YOUR GOOGLE APPS SCRIPT URL
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyI47e4KVTxcEgMXLPHb8q4eIHqI0FCq6qwYNcIGPzvTHWpoDk2JnuRYbzWl2WxEBw33Q/exec';
+
+  function showStatus(message, type) {
+    formStatus.textContent = message;
+    formStatus.className = `form-status ${type}`;
+    formStatus.style.display = 'block';
+    if (type === 'success') {
+      setTimeout(() => {
+        formStatus.style.display = 'none';
+      }, 6000);
+    }
+  }
+
+  function setLoading(isLoading) {
+    submitBtn.disabled = isLoading;
+    submitBtn.innerHTML = isLoading ? '⏳ Sending...' : '🚀 Submit & Get Quote';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    
+    // Client-side validation
+    if (!name) {
+      showStatus('❌ Please enter your full name', 'error');
+      document.getElementById('name').focus();
+      return;
+    }
+    if (!email) {
+      showStatus('❌ Please enter your email address', 'error');
+      document.getElementById('email').focus();
+      return;
+    }
+    const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+    if (!emailRegex.test(email)) {
+      showStatus('❌ Please enter a valid email address', 'error');
+      document.getElementById('email').focus();
+      return;
+    }
+    if (!message) {
+      showStatus('❌ Please tell us about your project', 'error');
+      document.getElementById('message').focus();
+      return;
+    }
+    
+    formStatus.style.display = 'none';
+    setLoading(true);
+    
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      });
+      
+      // With no-cors, we can't read the response, so we assume success
+      form.reset();
+      showStatus('✅ Message sent successfully! We will get back to you within 24 hours.', 'success');
+      
+    } catch (error) {
+      console.error('Form submission error:', error);
+      showStatus('❌ Unable to send message. Please email us directly at webnovasolutions24@gmail.com', 'error');
+    } finally {
+      setLoading(false);
+    }
+  });
+
+  // ========== LEGAL MODAL FUNCTIONS ==========
+  const legalModal = document.getElementById('legalModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+
+  window.openLegalModal = (type) => {
+    if (type === 'privacy') {
+      modalTitle.innerText = 'Privacy Policy';
+      modalBody.innerHTML = `
+        <h2>Privacy Policy</h2>
+        <p><strong>Effective Date:</strong> April 29, 2026</p>
+        <p>This Privacy Policy explains how <strong>Web Nova Solution</strong> ("Company", "we", "us", "our") collects, uses, discloses, and safeguards your information when you visit our website or engage our web development, design, SEO, and maintenance services. We are based in India and comply with the <strong>Information Technology Act, 2000</strong> (IT Act) and applicable data protection guidelines.</p>
+        <h3>1. Information We Collect</h3>
+        <p>We may collect the following categories of personal information:</p>
+        <ul><li><strong>Identity Data:</strong> Name, business name, designation.</li><li><strong>Contact Data:</strong> Email address, phone number, mailing address.</li><li><strong>Project Data:</strong> Details about your website requirements, content, login credentials (shared securely).</li><li><strong>Technical Data:</strong> IP address, browser type, device information when you interact with our site.</li><li><strong>Usage Data:</strong> How you use our website, forms, and communication preferences.</li><li><strong>Payment Data:</strong> Billing details processed via third-party gateways (we do not store full card information).</li></ul>
+        <h3>2. How We Use Your Information</h3>
+        <p>We use collected data for the following lawful purposes: to deliver services, communicate project updates, improve our offerings, for marketing (with consent), and to comply with legal obligations under Indian laws.</p>
+        <h3>3. Data Protection & Security Practices</h3>
+        <p>We adopt industry-standard security measures, including encryption (SSL), access controls, regular software updates, and secure data storage. However, no method of transmission over the internet is 100% secure.</p>
+        <h3>4. Cookies & Tracking Technologies</h3>
+        <p>Our website uses cookies to enhance user experience, analyse traffic, and personalize content. You can control cookie preferences via browser settings.</p>
+        <h3>5. Third-Party Services & Disclosures</h3>
+        <p>We may share data with trusted third parties including hosting providers, payment gateways, and analytics tools. We do not sell your personal information.</p>
+        <h3>6. User Rights</h3>
+        <p>You have the right to access, update, or correct your personal data, withdraw consent for marketing, and request deletion of your data subject to legal retention requirements.</p>
+        <h3>7. Contact Details (Grievance Officer)</h3>
+        <p><strong>Web Nova Solution</strong><br>Email: webnovasolutions24@gmail.com<br>Phone: +91 89605 39160<br>Address: New Delhi, India</p>
+        <div class="legal-note"><strong>⚖️ Disclaimer:</strong> This Privacy Policy is a general template intended for informational purposes. It does not constitute legal advice. We strongly recommend that you consult with a qualified legal professional to ensure full compliance with applicable laws.</div>
+      `;
+    } else {
+      modalTitle.innerText = 'Terms of Service';
+      modalBody.innerHTML = `
+        <h2>Terms of Service</h2>
+        <p><strong>Last Updated:</strong> April 29, 2026</p>
+        <p>These Terms of Service ("Agreement") govern the relationship between <strong>Web Nova Solution</strong> ("Company", "we", "us") and the client ("Client", "you") regarding the provision of website design, development, SEO, maintenance, and related digital services.</p>
+        <h3>1. Scope of Services</h3>
+        <p>We will provide services as outlined in the project proposal. Any changes to the scope require a written change order, which may involve additional fees.</p>
+        <h3>2. Client Responsibilities</h3>
+        <p>You agree to provide timely access to necessary resources: content, hosting credentials, brand guidelines, and prompt feedback. You must ensure that any materials you provide do not infringe on intellectual property rights.</p>
+        <h3>3. Payment Terms & Fees</h3>
+        <p>Fees are quoted in Indian Rupees (INR) and are exclusive of GST (18% as applicable). Payment Schedule: Typically 50% advance to initiate work, and 50% upon project completion. <strong>No Refunds Policy:</strong> Due to the custom nature of digital services, all fees are non-refundable once work has commenced.</p>
+        <h3>4. Revisions & Acceptance</h3>
+        <p>The proposal will specify the number of revision rounds included. Additional revisions will be billed at ₹1,500/hour. Upon final delivery, the Client shall provide written acceptance within 7 working days.</p>
+        <h3>5. Intellectual Property Rights</h3>
+        <p>Upon full payment, we assign to you all ownership of the custom code and deliverables specifically created for your project. We retain the right to reuse general-purpose code libraries. We may display the completed website in our portfolio unless you request otherwise.</p>
+        <h3>6. Limitation of Liability</h3>
+        <p>To the maximum extent permitted by Indian law, we disclaim all implied warranties. Our total liability shall not exceed the total fees paid by you in the preceding six months.</p>
+        <h3>7. Termination & Suspension</h3>
+        <p>Either party may terminate this Agreement with 15 days' written notice for material breach. Upon termination, you pay for all work completed up to the termination date.</p>
+        <h3>8. Governing Law & Dispute Resolution</h3>
+        <p>This Agreement shall be governed by the laws of <strong>India</strong>. Any dispute shall be resolved through binding arbitration in <strong>New Delhi, India</strong> in accordance with the Arbitration and Conciliation Act, 1996.</p>
+        <h3>9. Contact Information</h3>
+        <p>Email: webnovasolutions24@gmail.com | Phone: +91 89605 39160</p>
+        <div class="legal-note"><strong>⚖️ Important Legal Disclaimer:</strong> This document is a general template provided for informational purposes and does not constitute legal advice. You are strongly advised to have these terms reviewed by a qualified legal professional.</div>
+      `;
+    }
+    legalModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeLegalModal = () => {
+    legalModal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  legalModal.addEventListener('click', (e) => { if (e.target === legalModal) closeLegalModal(); });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
